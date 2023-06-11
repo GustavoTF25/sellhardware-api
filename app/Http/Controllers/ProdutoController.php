@@ -12,10 +12,10 @@ use Illuminate\Http\Response;
 class ProdutoController extends Controller
 {
     
-    /*public function showprod(string $id){
+    public function showprod(string $id){
         $produtos = Produto::all();
         return ProdutoResource::collection($produtos);
-    }*/
+    }
     public function addproduto(Request $request){
         $data = $request->all();
         $produto = Produto::create($data); 
