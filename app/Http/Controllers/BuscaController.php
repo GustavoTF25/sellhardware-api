@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redis;
 
@@ -15,9 +16,37 @@ class BuscaController extends Controller
     public function busca(Request $request)
     {
         $query = Produto::query();
-        
-        //$data = request(Produto::query());
+        if ($request->has('nome')) {
+            $query->where('nome', 'LIKE', '%' . $request->nome . '%');
+        }
+    
         if ($request->has('modelo')) {
+            $query->where('modelo', 'LIKE', '%' . $request->modelo . '%');
+        }
+    
+        if ($request->has('fabricante')) {
+            $query->where('fabricante', 'LIKE', '%' . $request->fabricante . '%');
+        }
+            
+        if ($request->has('marca')) {
+            $query->where('marca', 'LIKE', '%' . $request->marca . '%');
+        }
+   
+        if ($request->has('tipo')) {
+            $query->where('tipo', 'LIKE', '%' . $request->tipo . '%');
+        }
+
+        $produtos = $query->paginate();
+    
+        return $produtos;
+
+            //return response()->json([], Response::HTTP_NOT_FOUND);
+        }
+    }
+
+
+//$data = request(Produto::query());
+       /* if ($request->has('modelo')) {
             $query = Produto::where('modelo', 'LIKE', '%'.$request->modelo.'%');
             
         }else{
@@ -34,14 +63,4 @@ class BuscaController extends Controller
     public function darErro(){
     $data = ['message' => 'Item não encontrado'];
     return response()->json($data, Response::HTTP_NOT_FOUND);
-    }
-    
-
-
-
-
-        // elseif($data === null){
-        //     return response('Nao encontrado');
-        // }
-        // Produto::findOrFail($query);
-}
+    }*/
