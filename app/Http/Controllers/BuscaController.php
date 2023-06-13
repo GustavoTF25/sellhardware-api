@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\darErro;
-use App\Http\Requests\BuscaRequest;
+//use App\Http\Controllers\darErro;
+//use App\Http\Requests\BuscaRequest;
 use Illuminate\Http\Request;
 use App\Models\Produto;
-use Illuminate\Contracts\Database\Eloquent\Builder;
-use Illuminate\Http\Client\Request as ClientRequest;
-use Illuminate\Http\Client\RequestException;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Redis;
+//use Illuminate\Contracts\Database\Eloquent\Builder;
+//use Illuminate\Http\Client\Request as ClientRequest;
+//use Illuminate\Http\Client\RequestException;
+//use Illuminate\Http\Response;
+//use Illuminate\Support\Facades\Redis;
 
 class BuscaController extends Controller
 {
     public function busca(Request $request)
     {
         $query = Produto::query();
-        if ($request->has('nome')) {
-            $query->where('nome', 'LIKE', '%' . $request->nome . '%');
+        if ($request->has('componente')) {
+            $query->where('componente', 'LIKE', '%' . $request->componente . '%');
         }
     
         if ($request->has('modelo')) {

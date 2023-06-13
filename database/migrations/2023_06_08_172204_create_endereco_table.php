@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('endereco', function (Blueprint $table) {
             $table->id();
-            $table->string('rua', 45);
-            $table->string('bairro', 45);
-            $table->string('cidade', 45);
-            $table->string('estado', 45);
+            $table->string('rua', 45)->nullable();
+            $table->string('bairro', 45)->nullable();
+            $table->string('cidade', 45)->nullable();
+            $table->string('estado', 45)->nullable();
             
             
 

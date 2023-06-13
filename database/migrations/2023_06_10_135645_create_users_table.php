@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Unique;
 
 return new class extends Migration
 {
@@ -12,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+       
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 50)->nullable(true);
-            $table->string('email', 100);
-            $table->integer('celular')-> size(12)->default(55);
+            $table->string('nome', 100)->nullable();
+            $table->string('email', 150)->unique();
+            $table->integer('celular')->size(12)->nullable();
             $table->string('senha');
-            $table->enum('ativo', ['sim', 'nao'])->default('sim');
-            $table->enum('admin', ['sim', 'nao'])->default('nao');
-            $table->string('foto')->default('/');
+            $table->enum('ativo', array('sim', 'nao'))->default('sim');
+            $table->string('fotodeperfil')->nullable();
             $table->timestamps();
-            //$table->id('id_endereço');
+            $table->foreignId('id_endereco')->constrained(table: 'endereco', indexName:'users_id_endereco')->nullable();
         });
     }
 

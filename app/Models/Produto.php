@@ -9,12 +9,14 @@ class Produto extends Model
 {
     use HasFactory;
     
-
+    public function endereco(){
+        return $this->belongsTo('App\enderecos', 'id_endereco');
+    }
     protected $table = 'produto';
     public $timestamps = false;
 
     protected $fillable = [
-        'nome',
+        'componente',
         'fabricante',
         'marca',
         'modelo',
