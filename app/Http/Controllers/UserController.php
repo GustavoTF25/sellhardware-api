@@ -17,10 +17,6 @@ public function index(){
 
  }
 
- 
-
-
-
  public function store(StoreUpdateUserRequest $request){
    
 
@@ -61,7 +57,7 @@ public function update(StoreUpdateUserRequest $request, string $id){
    return new UserResource($user);
 }
 
-public function apagar(string $id){
+public function destroy(string $id){
    $user = User::findOrFail($id);
    $user->delete();
 

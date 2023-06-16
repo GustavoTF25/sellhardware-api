@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use App\Http\Requests\StoreUpdateProdutoRequest;
+use App\Http\Requests\StoreUpdateProdutoRequest;
 use App\Http\Resources\ProdutoResource;
 use App\Models\Produto;
 //use Illuminate\Http\RedirectResponse;
@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 class ProdutoController extends Controller
 {
     
-    public function showprod(string $id){
+    public function showprod(){
         $produtos = Produto::all();
         return ProdutoResource::collection($produtos);
     }

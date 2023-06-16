@@ -22,6 +22,7 @@ class StoreUpdateProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            
             'capacidade' => ['nullable']
         ];
     }

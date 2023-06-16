@@ -16,7 +16,7 @@ class ProdutoResource extends JsonResource
     {
         return [
             'identify' => $this->id,
-            'nome do componente' => strtoupper($this->nome),
+            'componente' => strtoupper($this->componente),
             'Fabricante' => $this->fabricante,
             'Marca'=> $this->marca,
             'Modelo' => $this->modelo,

@@ -1,26 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-//use App\Http\Controllers\darErro;
-//use App\Http\Requests\BuscaRequest;
+use App\Http\Controllers\darErro;
+use App\Http\Requests\BuscaRequest;
+use App\Models\Anuncio;
 use Illuminate\Http\Request;
 use App\Models\Produto;
-//use Illuminate\Contracts\Database\Eloquent\Builder;
-//use Illuminate\Http\Client\Request as ClientRequest;
-//use Illuminate\Http\Client\RequestException;
-//use Illuminate\Http\Response;
-//use Illuminate\Support\Facades\Redis;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redis;
 
 class BuscaController extends Controller
 {
     public function busca(Request $request)
     {
-        $query = Produto::query();
-        if ($request->has('componente')) {
-            $query->where('componente', 'LIKE', '%' . $request->componente . '%');
+        $query = Anuncio::query();
+
+
+
+        if ($request->has('nome_anuncio')) {
+            $query->where('nome_anuncio', 'LIKE', '%' . $request->nome_anuncio . '%');
+           
         }
     
-        if ($request->has('modelo')) {
+       /* if ($request->has('modelo')) {
             $query->where('modelo', 'LIKE', '%' . $request->modelo . '%');
         }
     
@@ -34,7 +39,7 @@ class BuscaController extends Controller
    
         if ($request->has('tipo')) {
             $query->where('tipo', 'LIKE', '%' . $request->tipo . '%');
-        }
+        }*/
 
         $produtos = $query->paginate();
     

@@ -22,7 +22,9 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/cadproduto', [ProdutoController::class, 'addproduto']);
     Route::patch('/cadproduto/{id}', [ProdutoController::class, 'altprod']);
     Route::delete('/cadproduto/{id}', [ProdutoController::class, 'delprod']);
+    Route::get('/produtos', [ProdutoController::class, 'showprod']);
     Route::get('/produtos/{id}', [ProdutoController::class, 'mostrarprod']);
+    Route::post('/anunciar', [AnuncioController::class, 'anunciar']);
     });
 
 

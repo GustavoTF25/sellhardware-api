@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('categoria',255)->nullable();
             $table->string('tipo',255)->nullable();
             $table->float('capacidade')->nullable();
-            $table->longText('observacoes')->nullable();
+           
             //$table->foreignId('id_observacoes')->constrained(table: 'observacoes', indexName: 'produto_id_observacoes');
            // $table->unsignedInteger('id_obs')->nullable();
            // $table->foreignId('id_obs')->references('id_observacoes')->on('observacoes')->onDelete('cascade')->onUpdate('cascade');
