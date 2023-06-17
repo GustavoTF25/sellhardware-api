@@ -9,19 +9,21 @@ class Produto extends Model
 {
     use HasFactory;
     
-
     protected $table = 'produto';
     public $timestamps = false;
 
     protected $fillable = [
-        'nomecomponente',
+        'componente',
         'fabricante',
         'marca',
         'modelo',
         'categoria',
         'tipo',
-        'capacidade',
-        'observacoes'
+        'capacidade'
+        
     ];
-
+    public function anuncio()
+    {
+        return $this->hasMany(related: Anuncio::class, foreignKey: 'id_produto', localKey: 'id');
+    }
 }

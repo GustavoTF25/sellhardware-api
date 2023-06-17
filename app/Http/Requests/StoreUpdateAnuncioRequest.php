@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateProdutoRequest extends FormRequest
+class StoreUpdateAnuncioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class StoreUpdateProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
-            'capacidade' => ['nullable']
+            'id do anuncio' => $this->id,
+            'titulo' => $this->titulo, 
         ];
     }
 }

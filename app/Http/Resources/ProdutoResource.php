@@ -16,14 +16,14 @@ class ProdutoResource extends JsonResource
     {
         return [
             'identify' => $this->id,
-            'nomecomponente' => strtoupper($this->nomecomponente),
-            'Fabricante' => $this->fabricante,
-            'Marca'=> $this->marca,
-            'Modelo' => $this->modelo,
-            'Categoria' => $this->categoria,
-            'Tipo' => $this->tipo,
-            'Capacidade' => $this->capacidade, 
-            'observacoes' => $this->observacoes
+            'componente' => strtoupper($this->componente),
+            'fabricante' => $this->fabricante,
+            'marca'=> $this->marca,
+            'modelo' => $this->modelo,
+            'categoria' => $this->categoria,
+            'tipo' => $this->tipo,
+            'capacidade' => $this->capacidade
+            //'observacoes' => $this->observacoes
         ];
     }
 }

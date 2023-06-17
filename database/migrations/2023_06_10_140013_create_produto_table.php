@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('produto', function (Blueprint $table) {
             $table->id();
-            $table->string('nomecomponente',255);
+            $table->string('componente',255);
             $table->string('fabricante',255)->nullable();
             $table->string('marca',255)->nullable();
             $table->string('modelo',255)->nullable();
             $table->string('categoria',255)->nullable();
             $table->string('tipo',255)->nullable();
             $table->string('capacidade')->nullable();
-            $table->longText('observacoes')->nullable();
+            
             //$table->foreignId('id_observacoes')->constrained(table: 'observacoes', indexName: 'produto_id_observacoes');
            // $table->unsignedInteger('id_obs')->nullable();
            // $table->foreignId('id_obs')->references('id_observacoes')->on('observacoes')->onDelete('cascade')->onUpdate('cascade');

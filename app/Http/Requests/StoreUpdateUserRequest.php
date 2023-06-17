@@ -26,10 +26,11 @@ class StoreUpdateUserRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-             'nome' => ['nullable', 'max:35'],
+             'nome' => ['required', 'max:35'],
              'email' => ['required', 'email', 'max:30', 'unique:users'],
              'celular' => ['required', 'max:15'],
-             'senha' => ['required', 'min:8']
+             'senha' => ['required', 'min:8'],
+             'id_endereco' => ['nullable']
             /*'email' => ['required','max:15','unique:users'],
             'senha' => ['required', 'min 8']*/ ];
 

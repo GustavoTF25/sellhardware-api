@@ -14,13 +14,20 @@ return new class extends Migration
        
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            //$table->id('id_endereco');
             $table->string('nome', 100)->nullable();
             $table->string('email', 150)->unique();
             $table->integer('celular')->size(12)->nullable();
             $table->string('senha');
+            $table->string('rua', 45)->nullable();
+            $table->string('bairro', 45)->nullable();
+            $table->string('cidade', 45)->nullable();
+            $table->string('estado', 45)->nullable();
             $table->enum('ativo', array('sim', 'nao'))->default('sim');
             $table->string('fotodeperfil')->nullable();
             $table->timestamps();
+        
+
         });
     }
 
