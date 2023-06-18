@@ -18,6 +18,7 @@ class Anuncio extends Model
        'preco',
        'condicao_produto',
        'status_anuncio',
+       'descricao',
        'media',
        'observacoes',
        'id_usuario',

@@ -12,7 +12,7 @@ class AnuncioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function listarAnuncios()
     {
         $anuncio = Anuncio::all();
         return AnuncioResource::collection($anuncio);
@@ -38,6 +38,7 @@ class AnuncioController extends Controller
         $AnuncioData = $request->all(); 
         $user = auth()->user()->id; 
         $AnuncioData['id_usuario'] = $user;
+        
             
         $anuncio = Anuncio::create($AnuncioData);
         //echo $AnuncioData;
@@ -77,14 +78,22 @@ class AnuncioController extends Controller
     {
         //
     }
-    public function buscaAnuncio(Request $request)
+    
+    public function filtrarAnuncio(Request $request)
     {
         $query = Anuncio::query();
+
         if ($request->has('titulo')) {
-            $query->where('titulo', 'LIKE', '%' . $request->nome_anuncio . '%');
+            $query->where('titulo', 'LIKE', '%' . $request->titulo . '%');
         }
+        if ($request->has('condicao_produto')) {
+            $query->where('condicao_produto', 'Like', '%' . $request->condicao_produto . '%');
+        }
+
+
+
          
-        $produtos = $query->paginate(1);
+        $produtos = $query->paginate();
         return $produtos;           
         
     }

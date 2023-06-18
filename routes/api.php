@@ -16,16 +16,16 @@ Route::get('/listarUsuario', [UserController::class, 'index']);
 Route::get('/listarUsuario/{id}', [UserController::class, 'show' ]);
 Route::delete('/deleteUsuario/{id}', [UserController::class, 'delete']);
 Route::put('/alterarUsuario/{id}', [UserController::class, 'update']);
-//------------------------------Busca e Login--------------------------------------
+//------------------------------Login--------------------------------------
 Route::post('/login', [AuthController::class, 'auth']);
 
 //----------------------FILTRO DA LISTA DE ANUNCIOS-----------------------
-Route::get('/filtroAnuncio', [AnuncioController::class, 'filtrarAnuncio']);
-Route::get('filtroAnuncio/{id}',[AnuncioController::class, 'filtrarAnuncioid']);
+Route::get('/filtrarAnuncio', [AnuncioController::class, 'filtrarAnuncio']);
+Route::get('/filtrarAnuncio/{id}',[AnuncioController::class, 'show']);
 
 //---------------------------Mostra todos os anuncios(geral ou ID)----------------------
-Route::get('/listarAnuncios/{id}', [AnuncioController::class, 'show']);
-Route::get('/listarAnuncios', [AnuncioController::class, 'listarAnuncios']);
+Route::get('/listarAnuncio/{id}', [AnuncioController::class, 'show']);
+Route::get('/listarAnuncio', [AnuncioController::class, 'listarAnuncios']);
 
 //---------------Autenticação------------------------------------
 Route::middleware(['auth:sanctum'])->group(function(){
