@@ -48,7 +48,7 @@ class User extends Authenticatable
     protected $casts = [
         'senha' => 'hashed'
     ];
-    public function anuncio()
+    public function anunciar()
     {
         return $this->hasMany(related: Anuncio::class,foreignKey: 'id_usuario', localKey:'id' );
     }

@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreUpdateAnuncioRequest;
+use App\Http\Resources\AnuncioResource;
+use App\Http\Resources\ProdutoResource;
+use App\Models\User;
+use app\Models\Anuncio;
+use App\Models\Produto;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Request; 
+
+class AnuncioController extends Controller
+{
+    use AuthorizesRequests, ValidatesRequests;
+    public function index(){
+        $anuncio = Anuncio::all();
+        return AnuncioResource::collection($anuncio);
+    }
+
+
+    public function store(StoreUpdateAnuncioRequest $request){
+        //$user = auth()->user();
+        //$request['id_usuario'] = Auth()->user()->id;
+        //$data = $request->produto()->id;
+        //$data = $request->user()->id;
+ 
+        $anuncioData = DB::table('users')
+            ->join('anuncio', 'anuncio.id_usuario', '=', 'users.id')
+            ->select('users.id', 'anuncio.id')
+            ->get();
+            
+        //$anuncio = Anuncio::create($anuncioData);
+        echo "$anuncioData";
+        return new AnuncioResource($anuncioData);
+    }
+    public function show(string $id){
+        $anuncio = Produto::findOrFail($id);
+        return new ProdutoResource($anuncio);
+    }
+}
+//$user->Anuncio::create($anuncioData);

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse as HttpFoundationRedirectR
 class ProdutoController extends Controller
 {
     
-    public function show(){
+    public function index(){
         $produtos = Produto::all();
         return ProdutoResource::collection($produtos);
     }
@@ -22,7 +22,7 @@ class ProdutoController extends Controller
         $produto = Produto::create($data); 
         return new ProdutoResource($produto);
     }
-    public function index(string $id){
+    public function show(string $id){
         $produto = Produto::findOrFail($id);
         return new ProdutoResource($produto);
     }
@@ -34,9 +34,10 @@ class ProdutoController extends Controller
     }
     public function destroy(string $id){
         $produto = Produto::findOrFail($id);
+        $produtos = $produto->$id;
         $produto->delete();
         $msg = ['message'=>'Produto apagado!'];
-        return response()->json([$msg], Response::HTTP_NO_CONTENT);
+        return response()->json([$produtos], Response::HTTP_NO_CONTENT, $msg, 0);
         //return RedirectResponse()->with('message', 'Produto deletado com Sucesso!');
      }
      

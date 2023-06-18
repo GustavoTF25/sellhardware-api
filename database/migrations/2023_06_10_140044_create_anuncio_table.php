@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+//use PhpParser\Node\NullableType;
 
 return new class extends Migration
 {
@@ -15,10 +16,11 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->float('quantidade');
-            $table->enum('condicao_produto', array('novo','semi_novo','usado'))->default('novo');
-            $table->enum('status_anuncio', array('ativo', 'inativo'))->default('ativo');
-            $table->longText('descricao');
-            $table->float('media');
+            $table->enum('condicao_produto', array('novo','semi_novo','usado'))->default('novo')->nullable();
+            $table->boolean('status_anuncio')->default(true)->nullable();
+            $table->longText('descricao')->nullable();
+            $table->float('mediaNotas')->nullable();
+            $table->float('mediaVotos')->nullable();
             $table->longText('observacoes')->nullable();
             $table->timestamps();
             $table->foreignId('id_usuario')->constrained(table: 'users', indexName: 'anuncio_id_users');

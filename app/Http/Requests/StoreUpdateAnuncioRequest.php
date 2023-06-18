@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use app\Models\Anuncio;
 class StoreUpdateAnuncioRequest extends FormRequest
 {
     /**
@@ -22,8 +22,13 @@ class StoreUpdateAnuncioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id do anuncio' => $this->id,
-            'titulo' => $this->titulo, 
+            'id_prod' => ['required'],
+            'titulo' => ['required', 'min:3', 'max:40'],
+            'quantitdade' => ['required' , 'min:1'], 
+            'condicao_produto' => ['required'],
+            'status_anuncio' => ['required'],
+            'descricao' => ['nullable'],
+            'observacoes' => ['required', 'min:15']
         ];
     }
 }
