@@ -9,32 +9,40 @@ use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-
-
-
-
-Route::apiResource('/sud', UserController::class); //SUD = Store, Update e Delete de Usuario
+//----------------------Controle de Usuário----------------------------------
+Route::post('/cadastroUsuario', [UserController::class, 'store']);
+Route::get('/listarUsuario', [UserController::class, 'index']);
+Route::get('/listarUsuario/{id}', [UserController::class, 'show' ]);
+Route::delete('/deleteUsuario/{id}', [UserController::class, 'delete']);
+Route::put('/alterarUsuario/{id}', [UserController::class, 'update']);
+//------------------------------Busca e Login--------------------------------------
 Route::post('/login', [AuthController::class, 'auth']);
-Route::get('/pesquisa', [BuscaController::class, 'busca']);
+
+//----------------------FILTRO DA LISTA DE ANUNCIOS-----------------------
+Route::get('/filtroAnuncio', [AnuncioController::class, 'filtrarAnuncio']);
+Route::get('filtroAnuncio/{id}',[AnuncioController::class, 'filtrarAnuncioid']);
+
+//---------------------------Mostra todos os anuncios(geral ou ID)----------------------
+Route::get('/listarAnuncios/{id}', [AnuncioController::class, 'listarAnuncios']);
+Route::get('/listarAnuncios', [AnuncioController::class, 'listarAnuncios']);
+
+//---------------Autenticação------------------------------------
 Route::middleware(['auth:sanctum'])->group(function(){
-    Route::post('/logout', [AuthController::class, 'logout']);
-    //-----cadastro de produtos do adm--------
-    Route::post('/cadproduto', [ProdutoController::class, 'addproduto']);
-    Route::patch('/cadproduto/{id}', [ProdutoController::class, 'altprod']);
-    Route::delete('/cadproduto/{id}', [ProdutoController::class, 'delprod']);
-    Route::get('/produtos', [ProdutoController::class, 'showprod']);
-    Route::get('/produtos/{id}', [ProdutoController::class, 'mostrarprod']);
-    Route::post('/anunciar', [AnuncioController::class, 'anunciar']);
-    });
+//----------------Logout de Usuário--------------------
+     Route::post('/logout', [AuthController::class, 'logout']);
+//-------------------------Controle de Produtos-----------------------------------
+    Route::post('/cadastroProduto', [ProdutoController::class, 'store']);
+    Route::delete('/deleteProduto', [ProdutoController::class, 'delete']);
+    Route::put('/alterarProduto', [ProdutoController::class, 'update']);
+    Route::get('/listarProdutos', [ProdutoController::class, 'index']);
+    Route::get('/listarProdutos/{id}', [ProdutoController::class, 'show']);
+//------------------------Controle de Anuncios-----------------------------
+    Route::post('/criarAnuncio', [AnuncioController::class, 'store']);
+
+});
 
 
-
-// Route::delete('/users/{id}', [UserController::class, 'apagar']);
-// Route::patch('/users/{id}', [UserController::class, 'update']);
-// Route::get('/users/{id}', [UserController::class, 'show']);
-// Route::get('/users', [UserController::class, 'index']);
-// Route::post('/users', [UserController::class, 'store']);
-
+//------------------RAIZ-----------------------
 Route::get('/', function () {
     return response()->json(['Sucesso' => true]);
 });

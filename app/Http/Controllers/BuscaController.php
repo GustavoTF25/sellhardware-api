@@ -20,26 +20,11 @@ class BuscaController extends Controller
 
 
 
-        if ($request->has('nome_anuncio')) {
-            $query->where('nome_anuncio', 'LIKE', '%' . $request->nome_anuncio . '%');
-           
+        if ($request->has('titulo')) {
+            $query->where('titulo', 'LIKE', '%' . $request->titulo . '%');
         }
-    
-       /* if ($request->has('modelo')) {
-            $query->where('modelo', 'LIKE', '%' . $request->modelo . '%');
-        }
-    
-        if ($request->has('fabricante')) {
-            $query->where('fabricante', 'LIKE', '%' . $request->fabricante . '%');
-        }
-            
-        if ($request->has('marca')) {
-            $query->where('marca', 'LIKE', '%' . $request->marca . '%');
-        }
-   
-        if ($request->has('tipo')) {
-            $query->where('tipo', 'LIKE', '%' . $request->tipo . '%');
-        }*/
+
+        
 
         $produtos = $query->paginate();
     

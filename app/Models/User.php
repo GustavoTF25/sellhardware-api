@@ -17,7 +17,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-
     
     protected $fillable = [
         'nome',
@@ -48,4 +47,11 @@ class User extends Authenticatable
     protected $casts = [
         'senha' => 'hashed'
     ];
+
+
+    public function anunciarU(){
+        return $this->hasMany(related: Anuncio::class, foreignKey: 'anuncio_id', localKey: 'id');
+        
+    }
+
 }

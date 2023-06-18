@@ -34,7 +34,7 @@ class StoreUpdateUserRequest extends FormRequest
             /*'email' => ['required','max:15','unique:users'],
             'senha' => ['required', 'min 8']*/ ];
 
-        if ($this->method() === 'PATCH'){
+        if ($this->method() === 'PUT'){
 
             $rules['email'] = ['required', 'email', 'max:30', Rule::unique('users')->ignore($this->id),];
             
