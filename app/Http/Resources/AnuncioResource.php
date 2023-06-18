@@ -15,12 +15,14 @@ class AnuncioResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'identify' => $this->id,
+            'Id do produto' => $this->id,
+            'titulo'=>$this->titulo,
             'quantidade' => $this->quantidade,
             'condicao_produto' => $this->condicao_produto,
             'status_anuncio' => $this->status_anuncio,
             'descricao' => $this->descricao,
-            'media' => $this->media,
+            'media_notas' => $this->mediaNotas,
+            'media_votos'=> $this->mediaVotos,
             'id_usuario' =>$this->id_usuario,
             'id_produto' => $this->id_produto
         ];

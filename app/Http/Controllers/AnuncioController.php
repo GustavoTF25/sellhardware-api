@@ -30,13 +30,15 @@ class AnuncioController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
-        $user = auth()->user()->id;
+        
         //$request['id_usuario'] = Auth()->user()->id;
             //$data = $request->produto()->id;
         //$AnuncioData = $request->user()->id; 
         
-        $AnuncioData = $request->all();  
-        $AnuncioData['id_usuario'] = $user;    
+        $AnuncioData = $request->all(); 
+        $user = auth()->user()->id; 
+        $AnuncioData['id_usuario'] = $user;
+            
         $anuncio = Anuncio::create($AnuncioData);
         //echo $AnuncioData;
         return new AnuncioResource($anuncio);
@@ -51,7 +53,7 @@ class AnuncioController extends Controller
         $anuncior = Anuncio::findOrFail($anuncio->id);
         return new AnuncioResource($anuncior);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -74,5 +76,16 @@ class AnuncioController extends Controller
     public function destroy(Anuncio $anuncio)
     {
         //
+    }
+    public function buscaAnuncio(Request $request)
+    {
+        $query = Anuncio::query();
+        if ($request->has('titulo')) {
+            $query->where('titulo', 'LIKE', '%' . $request->nome_anuncio . '%');
+        }
+         
+        $produtos = $query->paginate(1);
+        return $produtos;           
+        
     }
 }

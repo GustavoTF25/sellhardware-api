@@ -22,7 +22,7 @@ class StoreUpdateAnuncioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_prod' => ['required'],
+             
             'titulo' => ['required', 'min:3', 'max:40'],
             'quantitdade' => ['required' , 'min:1'], 
             'condicao_produto' => ['required'],

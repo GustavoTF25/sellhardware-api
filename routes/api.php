@@ -9,18 +9,16 @@ use App\Http\Controllers\BuscaController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnuncioController;
+use App\Models\Anuncio;
 
-
-
-
-Route::apiResource('/sud', UserController::class); //SUD = Store, Update e Delete de Usuario
+Route::post('/cadastroUsuario', [UserController::class, 'store']); //SUD = Store, Update e Delete de Usuario
 Route::post('/login', [AuthController::class, 'auth']);
-Route::get('/pesquisaDeProduto', [BuscaController::class, 'busca']);
+Route::get('/buscaAnuncio', [AnuncioController::class, 'buscaAnuncio']);
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('/logout', [AuthController::class, 'logout']);
-    //-----cadastro de produtos do adm--------
-    Route::apiResource('/produtos', ProdutoController::class);
-    Route::post('/anunciarProduto', [AnuncioController::class, 'store']);
+    //-----cadastro de produtos do adm--------//
+    Route::post('/cadastroProduto', [ProdutoController::class, 'store']);
+    Route::post('/criarAnuncio', [AnuncioController::class, 'store']);
     Route::get('/listarProdutos', [ProdutoController::class, 'index']);
     //Route::apiResource('/anunciar', AnuncioController::class);
     });
