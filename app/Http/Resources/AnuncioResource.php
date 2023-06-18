@@ -18,6 +18,7 @@ class AnuncioResource extends JsonResource
             'Id do produto' => $this->id,
             'titulo'=>$this->titulo,
             'quantidade' => $this->quantidade,
+            'preco' => $this->preco,
             'condicao_produto' => $this->condicao_produto,
             'status_anuncio' => $this->status_anuncio,
             'descricao' => $this->descricao,

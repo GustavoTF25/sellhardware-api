@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+use Illuminate\Database\Eloquent\Relations\Pivot;
 class Anuncio extends Model
 {
     use HasFactory;
@@ -14,18 +12,20 @@ class Anuncio extends Model
     protected $table = 'anuncio';
     //public $timestamps = false;
 
-  
-
-/*public function relacao(){
-    return $this->belongsToMany('nome', 'users_id', 'produto_id');
-
-
-}*/
- 
-
     protected $fillable = [
-       'nome_anuncio'
+       'titulo',
+       'quantidade',
+       'preco',
+       'condicao_produto',
+       'status_anuncio',
+       'media',
+       'observacoes',
+       'id_usuario',
+       'id_produto'
     ];
 
-
+    public function user()
+    {
+        return $this->belongsTo(related: User::class, foreignKey: 'id_usuario' ,ownerKey: 'id');
+    }
 }

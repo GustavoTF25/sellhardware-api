@@ -8,6 +8,7 @@ use App\Http\Controllers\BuscaController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnuncioController;
 
 //----------------------Controle de Usuário----------------------------------
 Route::post('/cadastroUsuario', [UserController::class, 'store']);
@@ -23,7 +24,7 @@ Route::get('/filtroAnuncio', [AnuncioController::class, 'filtrarAnuncio']);
 Route::get('filtroAnuncio/{id}',[AnuncioController::class, 'filtrarAnuncioid']);
 
 //---------------------------Mostra todos os anuncios(geral ou ID)----------------------
-Route::get('/listarAnuncios/{id}', [AnuncioController::class, 'listarAnuncios']);
+Route::get('/listarAnuncios/{id}', [AnuncioController::class, 'show']);
 Route::get('/listarAnuncios', [AnuncioController::class, 'listarAnuncios']);
 
 //---------------Autenticação------------------------------------
