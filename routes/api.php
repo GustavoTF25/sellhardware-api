@@ -1,7 +1,10 @@
 <?php
+/* 
 
-//use App\Http\Controllers\AuthController;
-//use App\Http\Controllers\Auth\AuthController;
+ARQUIVO DE ROTAS/ENDPOINTS SELLHARDWARE
+
+
+*/
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BuscaController;
@@ -15,7 +18,7 @@ Route::post('/cadastroUsuario', [UserController::class, 'store']);
 Route::get('/listarUsuario', [UserController::class, 'index']);
 Route::get('/listarUsuario/{id}', [UserController::class, 'show' ]);
 Route::delete('/deleteUsuario/{id}', [UserController::class, 'delete']);
-Route::put('/alterarUsuario/{id}', [UserController::class, 'update']);
+Route::put('/alterarUsuario/{id}', [UserController::class, 'edit']);
 //------------------------------Login--------------------------------------
 Route::post('/login', [AuthController::class, 'auth']);
 

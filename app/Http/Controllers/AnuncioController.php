@@ -9,9 +9,7 @@ use App\Http\Resources\AnuncioResource;
 
 class AnuncioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   //-----------RETORNA TODOS OS ANÚNCIOS CADASTRADOS-----------
     public function listarAnuncios()
     {
         $anuncio = Anuncio::all();
@@ -26,9 +24,7 @@ class AnuncioController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+//---------------Cadastra determinado anuncio no sistema-----------
     public function store(Request $request){
         
         //$request['id_usuario'] = Auth()->user()->id;
@@ -46,9 +42,7 @@ class AnuncioController extends Controller
      }
 
 
-    /**
-     * Display the specified resource.
-     */
+//------------Retorna Um anuncio por ID-------------------
     public function show(Anuncio $anuncio)
     {
         $anuncior = Anuncio::findOrFail($anuncio->id);
@@ -60,23 +54,28 @@ class AnuncioController extends Controller
      */
     public function edit(Anuncio $anuncio)
     {
-        //
+            
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Anuncio $anuncio)
+    public function update(Request $request, string $id)
     {
-        //
+        $anuncio = Anuncio::findOrFail($id);
+        $data = $request->all();
+        $anuncio->update($data);
+        return new AnuncioResource($anuncio);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Anuncio $anuncio)
+    public function destroy(string $id)
     {
-        //
+        $anuncio = Anuncio::findOrFail($id);
+        $anuncio->delete();
+        return response()->json(['Anuncio Excluido!'], 204);
     }
     
     public function filtrarAnuncio(Request $request)
@@ -84,15 +83,8 @@ class AnuncioController extends Controller
         $query = Anuncio::query();
 
         if ($request->has('titulo')) {
-            $query->where('titulo', 'LIKE', '%' . $request->titulo . '%');
+            $query->where('titulo', 'LIKE',  $request->titulo . '%');
         }
-        if ($request->has('condicao_produto')) {
-            $query->where('condicao_produto', 'Like', '%' . $request->condicao_produto . '%');
-        }
-
-
-
-         
         $produtos = $query->paginate();
         return $produtos;           
         

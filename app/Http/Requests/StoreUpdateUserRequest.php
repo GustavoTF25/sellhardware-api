@@ -30,15 +30,15 @@ class StoreUpdateUserRequest extends FormRequest
              'email' => ['required', 'email', 'max:30', 'unique:users'],
              'celular' => ['required', 'max:15'],
              'senha' => ['required', 'min:8'],
-             'id_endereco' => ['nullable']
-            /*'email' => ['required','max:15','unique:users'],
-            'senha' => ['required', 'min 8']*/ ];
+             'id_endereco' => ['nullable']];
 
         if ($this->method() === 'PUT'){
-
             $rules['email'] = ['required', 'email', 'max:30', Rule::unique('users')->ignore($this->id),];
-            
             $rules['senha'] = ['nullable', 'min:8'];
+            $rules['rua'] = ['required'];
+            $rules['bairro'] = ['nullable'];
+            $rules['cidade'] = ['nullable'];
+            $rules['estado'] = ['nullable'];
         }
         return $rules;
     }

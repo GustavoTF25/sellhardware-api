@@ -32,7 +32,7 @@ public function index(){
       return response()->json(['message' => 'usuario nao encontrado'], Response::NOT_FOUND)
    }*/
  }
-public function update(StoreUpdateUserRequest $request, string $id){
+public function edit(StoreUpdateUserRequest $request, string $id){
    $user = User::findOrFail($id);
    $data = $request->validated();
    if($request->senha)
