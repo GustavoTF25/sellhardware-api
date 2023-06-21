@@ -45,7 +45,6 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
 });
 
-
 //------------------RAIZ-----------------------
 Route::get('/', function () {
     return response()->json(['Sucesso' => true]);

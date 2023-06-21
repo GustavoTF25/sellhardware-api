@@ -21,17 +21,21 @@ class AuthController extends Controller
         );
 
         
+    }else{
+        return response()->json(['response' => true]);
     }
+    
+    return response()->json(['fail' => false]);
 
     //logout em outros dispositivos
     //if ($request->has('logout_others_devices'))
-    $user->tokens()->delete();
+    /*$user->tokens()->delete();
 
     $token = $user->createToken($request->email)->plainTextToken;
     return response()->json([
         'token' => $token,
 
-    ]);
+    ]);*/
       
     }
 
