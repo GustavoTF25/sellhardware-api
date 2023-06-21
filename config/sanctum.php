@@ -46,7 +46,9 @@ return [
     |
     */
 
-    'expiration' => null,
+    //Tempo de expiração do Token de Acesso do Usuário: 3h30
+ 
+    'expiration' => 210,
 
     /*
     |--------------------------------------------------------------------------

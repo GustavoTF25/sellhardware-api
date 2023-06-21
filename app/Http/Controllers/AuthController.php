@@ -37,9 +37,9 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         
-        $request->user->tokens()->delete();
+        $request->user()->tokens()->delete();
         return response()->json([
-            'mensagem' => 'sucesso',
+            'mensagem' => 'Você foi deslogado do sistema',
     
         ]);
     }
