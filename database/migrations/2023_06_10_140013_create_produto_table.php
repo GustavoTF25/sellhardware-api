@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('modelo',255)->nullable();
             $table->string('categoria',255)->nullable();
             $table->string('tipo',255)->nullable();
-            $table->string('capacidade')->nullable();
+            $table->string('capacidade', 255)->nullable();
            
             //$table->foreignId('id_observacoes')->constrained(table: 'observacoes', indexName: 'produto_id_observacoes');
            // $table->unsignedInteger('id_obs')->nullable();
