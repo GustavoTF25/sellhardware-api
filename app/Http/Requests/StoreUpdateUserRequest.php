@@ -43,10 +43,3 @@ class StoreUpdateUserRequest extends FormRequest
         return $rules;
     }
 }
-
-/*$validator = Validator::make($request->all(), [
-    'price' => 'numeric',
-    'min_amount' => 'numeric',
-    'max_amount' => 'numeric',
-    'cooldown' => 'numeric',
-]);*/

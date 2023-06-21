@@ -10,11 +10,17 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Verificação de dados inseridos do usuário
+     */
     public function auth(AuthRequest $request){
         
-        $credenciais = $request->only(['email', 'senha']);
+    $credenciais = $request->only(['email', 'senha']);
 
     $user = User::where('email', $request->email)->first();
+    /**
+     * Se algum campo for nulo ou a senha não bater, retorna falso
+     */
     if(!$user || ! Hash::check($request->senha, $user->senha)){
         
             return response()->json(['response' => false]);
@@ -30,18 +36,11 @@ class AuthController extends Controller
     
     return response()->json(['fail' => false]);
 
-    //logout em outros dispositivos
-    //if ($request->has('logout_others_devices'))
-    /*$user->tokens()->delete();
-
-    $token = $user->createToken($request->email)->plainTextToken;
-    return response()->json([
-        'token' => $token,
-
-    ]);*/
-      
     }
 
+    /**
+     * Revoga o token do Usuário
+     */
     public function logout(Request $request){
         
         $request->user()->tokens()->delete();

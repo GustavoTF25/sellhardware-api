@@ -13,9 +13,9 @@ class StoreUpdateAnuncioRequest extends FormRequest
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
+    
+  /**
+     * Pega as regras de validação para concluir a requisição
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */

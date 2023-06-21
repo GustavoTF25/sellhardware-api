@@ -16,20 +16,8 @@ class AnuncioController extends Controller
         return AnuncioResource::collection($anuncio);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
 //---------------Cadastra determinado anuncio no sistema-----------
     public function store(Request $request){
-        
-        //$request['id_usuario'] = Auth()->user()->id;
-            //$data = $request->produto()->id;
-        //$AnuncioData = $request->user()->id; 
         
         $AnuncioData = $request->all(); 
         $user = auth()->user()->id; 
@@ -45,20 +33,12 @@ class AnuncioController extends Controller
 //------------Retorna Um anuncio por ID-------------------
     public function show(Anuncio $anuncio)
     {
-        $anuncior = Anuncio::findOrFail($anuncio->id);
-        return new AnuncioResource($anuncior);
+        $anuncios = Anuncio::findOrFail($anuncio->id);
+        return new AnuncioResource($anuncios);
     }
     
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Anuncio $anuncio)
-    {
-            
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Atualiza/edita um determinado anuncio por ID
      */
     public function update(Request $request, string $id)
     {
@@ -69,7 +49,7 @@ class AnuncioController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove um determinado Anúncio por ID do Banco
      */
     public function destroy(string $id)
     {
@@ -78,6 +58,10 @@ class AnuncioController extends Controller
         return response()->json(['Anuncio Excluido!'], 204);
     }
     
+/*
+   Filtragem de Busca de anuncios
+*/ 
+
     public function filtrarAnuncio(Request $request)
     {
         $query = Anuncio::query();

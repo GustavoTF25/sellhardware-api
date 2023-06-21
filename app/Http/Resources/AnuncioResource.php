@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class AnuncioResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transforma o recurso num array
      *
      * @return array<string, mixed>
      */
