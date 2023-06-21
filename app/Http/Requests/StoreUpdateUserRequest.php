@@ -35,7 +35,7 @@ class StoreUpdateUserRequest extends FormRequest
         if ($this->method() === 'PUT'){
             $rules['email'] = ['required', 'email', 'max:30', Rule::unique('users')->ignore($this->id),];
             $rules['senha'] = ['nullable', 'min:8'];
-            $rules['rua'] = ['required'];
+            $rules['rua'] = ['nullable'];
             $rules['bairro'] = ['nullable'];
             $rules['cidade'] = ['nullable'];
             $rules['estado'] = ['nullable'];
