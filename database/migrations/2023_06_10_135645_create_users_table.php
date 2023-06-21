@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Roda as Migrations
      */
     public function up(): void
     {
@@ -17,7 +17,7 @@ return new class extends Migration
             //$table->id('id_endereco');
             $table->string('nome', 100)->nullable();
             $table->string('email', 150)->unique();
-            $table->integer('celular')->size(12)->nullable();
+            $table->integer('celular')->size(15)->nullable();
             $table->string('senha');
             $table->string('rua', 45)->nullable();
             $table->string('bairro', 45)->nullable();
