@@ -35,7 +35,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'senha'
+        //'senha'
        
     ];
 
@@ -45,7 +45,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'senha' => 'hashed'
+       // 'senha' => 'hashed'
     ];
 
 

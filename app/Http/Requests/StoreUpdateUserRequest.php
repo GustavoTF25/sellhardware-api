@@ -28,7 +28,7 @@ class StoreUpdateUserRequest extends FormRequest
         $rules = [
              'nome' => ['required', 'max:35'],
              'email' => ['required', 'email', 'max:30', 'unique:users'],
-             'celular' => ['required', 'max:15'],
+             'celular' => ['nullable', 'max:15'],
              'senha' => ['required', 'min:8'],
              'id_endereco' => ['nullable']];
 
@@ -43,3 +43,10 @@ class StoreUpdateUserRequest extends FormRequest
         return $rules;
     }
 }
+
+/*$validator = Validator::make($request->all(), [
+    'price' => 'numeric',
+    'min_amount' => 'numeric',
+    'max_amount' => 'numeric',
+    'cooldown' => 'numeric',
+]);*/

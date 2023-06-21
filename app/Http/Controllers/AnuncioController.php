@@ -83,7 +83,7 @@ class AnuncioController extends Controller
         $query = Anuncio::query();
 
         if ($request->has('titulo')) {
-            $query->where('titulo', 'LIKE',  $request->titulo . '%');
+            $query->where('titulo', 'LIKE', '%' . $request->titulo . '%');
         }
         $produtos = $query->paginate();
         return $produtos;           

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller{
@@ -18,7 +19,8 @@ public function index(){
  public function store(StoreUpdateUserRequest $request){
     //$data = $request::all();
     $data = $request->all();
-    $data['senha'] = bcrypt($request->senha);
+    //dd($data);
+    $data['senha'] = Hash::make($request->senha);
     //dd($data);
     $user = User::create($data);
     return new UserResource($user);
