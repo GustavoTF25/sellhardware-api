@@ -16,9 +16,12 @@ class AuthController extends Controller
 
     $user = User::where('email', $request->email)->first();
     if(!$user || ! Hash::check($request->senha, $user->senha)){
-        throw ValidationException::withMessages([
+  
+        return response()->json(['response' => false]);
+
+        /*throw ValidationException::withMessages([
             'email' => ['O usuário não foi encontrado, confira se o email e a senha estão corretos']]
-        );
+        );*/
 
         
     }else{
