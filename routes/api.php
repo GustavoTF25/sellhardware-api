@@ -29,19 +29,20 @@ Route::get('/filtrarAnuncio/{id}',[AnuncioController::class, 'show']);
 //---------------------------Mostra todos os anuncios(geral ou ID)----------------------
 Route::get('/listarAnuncio/{id}', [AnuncioController::class, 'show']);
 Route::get('/listarAnuncio', [AnuncioController::class, 'listarAnuncios']);
-
+Route::post('/criarAnuncio', [AnuncioController::class, 'store']);
+Route::post('/cadastroProduto', [ProdutoController::class, 'store']);
 //---------------Autenticação------------------------------------
 Route::middleware(['auth:sanctum'])->group(function(){
 //----------------Logout de Usuário--------------------
      Route::post('/logout', [AuthController::class, 'logout']);
 //-------------------------Controle de Produtos-----------------------------------
-    Route::post('/cadastroProduto', [ProdutoController::class, 'store']);
+   
     Route::delete('/deleteProduto', [ProdutoController::class, 'delete']);
     Route::put('/alterarProduto', [ProdutoController::class, 'update']);
     Route::get('/listarProdutos', [ProdutoController::class, 'index']);
     Route::get('/listarProdutos/{id}', [ProdutoController::class, 'show']);
 //------------------------Controle de Anuncios-----------------------------
-    Route::post('/criarAnuncio', [AnuncioController::class, 'store']);
+
 
 });
 
