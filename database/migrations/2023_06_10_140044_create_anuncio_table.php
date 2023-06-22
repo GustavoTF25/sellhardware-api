@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->float('quantidade');
-            $table->decimal('preco', 8, 2);
+            $table->string('preco', 255);
             $table->enum('condicao_produto', array('novo','semi_novo','usado'))->default('novo')->nullable();
             $table->boolean('status_anuncio')->default(true)->nullable();
             $table->longText('descricao')->nullable();
